@@ -1,3 +1,28 @@
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile45`, function (sprite, location) {
+    dog.sayText("A to press", 100, false)
+    if (controller.A.isPressed()) {
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile45`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile35`)
+        }
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile43`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile4`)
+        }
+    }
+})
+scene.onOverlapTile(SpriteKind.Enemy, assets.tile`myTile30`, function (sprite, location) {
+    sprite.destroy(effects.fire, 500)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile34`, function (sprite, location) {
+    dog.sayText("A to press", 100, false)
+    if (controller.A.isPressed()) {
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile34`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile35`)
+        }
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile36`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile4`)
+        }
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile24`, function (sprite, location) {
     if (diamond_chest_open) {
     	
@@ -22,6 +47,72 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile24`, function (sprite, 
             `, SpriteKind.Player)
         tiles.placeOnRandomTile(diamond_chest_open, assets.tile`myTile24`)
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile32`, function (sprite, location) {
+    dog.sayText("A to press", 100, false)
+    if (controller.A.isPressed()) {
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile32`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile35`)
+        }
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile37`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile4`)
+        }
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile46`, function (sprite, location) {
+    dog.sayText("A to press", 100, false)
+    if (controller.A.isPressed()) {
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile46`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile35`)
+        }
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile39`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile4`)
+        }
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile25`, function (sprite, location) {
+    game.over(true)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile42`, function (sprite, location) {
+    game.over(false)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile39`, function (sprite, location) {
+    game.over(false)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile37`, function (sprite, location) {
+    game.over(false)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile40`, function (sprite, location) {
+    dog.sayText("A to press", 100, false)
+    if (controller.A.isPressed()) {
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile40`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile35`)
+        }
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile41`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile4`)
+        }
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile20`, function (sprite, location) {
+    game.over(false)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile36`, function (sprite, location) {
+    game.over(false)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile44`, function (sprite, location) {
+    dog.sayText("A to press", 100, false)
+    if (controller.A.isPressed()) {
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile44`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile35`)
+        }
+        for (let temporary of tiles.getTilesByType(assets.tile`myTile42`)) {
+            tiles.setTileAt(temporary, assets.tile`myTile4`)
+        }
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile47`, function (sprite, location) {
+    tiles.loadMap(tiles.createMap(tilemap`level9`))
+    tiles.placeOnRandomTile(dog, assets.tile`myTile10`)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     if (chest_open) {
@@ -48,10 +139,58 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
         tiles.placeOnRandomTile(chest_open, assets.tile`myTile2`)
     }
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile31`, function (sprite, location) {
+    tiles.loadMap(tiles.createMap(tilemap`level6`))
+    tiles.placeOnRandomTile(dog, assets.tile`myTile10`)
+    SpawnEnemyDrone()
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile27`, function (sprite, location) {
+    tiles.loadMap(tiles.createMap(tilemap`level1`))
+    tiles.placeOnRandomTile(dog, assets.tile`myTile10`)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile41`, function (sprite, location) {
+    game.over(false)
+})
+sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
+    SpawnEnemyDrone()
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile26`, function (sprite, location) {
+    tiles.loadMap(tiles.createMap(tilemap`level2`))
+    tiles.placeOnRandomTile(dog, assets.tile`myTile10`)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    game.over(false)
+})
+function SpawnEnemyDrone () {
+    for (let temporary of tiles.getTilesByType(assets.tile`myTile29`)) {
+        enemy_drone = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . 4 . 4 . . . . . . . 
+            . . . . . 4 a 4 9 4 . . . . . . 
+            . . . . 4 4 5 4 . 4 4 . . . . . 
+            . . . 4 6 . 4 4 4 5 6 4 . . . . 
+            . . . . 4 4 4 7 4 4 4 . . . . . 
+            . . . 4 6 5 4 4 4 . 6 4 . . . . 
+            . . . . 4 4 . 4 5 4 4 . . . . . 
+            . . . . . 4 9 4 a 4 . . . . . . 
+            . . . . . . 4 . 4 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Enemy)
+        enemy_drone.follow(dog, 50)
+        tiles.placeOnTile(enemy_drone, temporary)
+    }
+}
+let enemy_drone: Sprite = null
 let chest_open: Sprite = null
 let diamond_chest_open: Sprite = null
-tiles.loadMap(tiles.createMap(tilemap`level2`))
-let dog = sprites.create(img`
+let dog: Sprite = null
+tiles.loadMap(tiles.createMap(tilemap`level3`))
+dog = sprites.create(img`
     e e e . . . . e e e . . . . 
     c d d c . . c d d c . . . . 
     c b d d f f d d b c . . . . 
