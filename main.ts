@@ -12,6 +12,50 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile45`, function (sprite, 
 scene.onOverlapTile(SpriteKind.Enemy, assets.tile`myTile30`, function (sprite, location) {
     sprite.destroy(effects.fire, 500)
 })
+scene.onOverlapTile(SpriteKind.Enemy, assets.tile`myTile38`, function (sprite, location) {
+    sprite.destroy(effects.fire, 500)
+})
+function SpawnRazorBall () {
+    for (let temporary of tiles.getTilesByType(assets.tile`myTile58`)) {
+        razor_ball = sprites.create(img`
+            . . 7 7 . . 
+            . 7 6 6 7 . 
+            7 6 7 7 6 7 
+            7 6 6 7 6 7 
+            . 7 6 6 7 . 
+            . . 7 7 . . 
+            `, SpriteKind.Enemy)
+        tiles.placeOnTile(razor_ball, temporary)
+        razor_ball.setBounceOnWall(true)
+        razor_ball.setVelocity(100, 0)
+    }
+    for (let temporary of tiles.getTilesByType(assets.tile`myTile33`)) {
+        razor_ball = sprites.create(img`
+            . . 7 7 . . 
+            . 7 6 6 7 . 
+            7 6 7 7 6 7 
+            7 6 6 7 6 7 
+            . 7 6 6 7 . 
+            . . 7 7 . . 
+            `, SpriteKind.Enemy)
+        tiles.placeOnTile(razor_ball, temporary)
+        razor_ball.setBounceOnWall(true)
+        razor_ball.setVelocity(0, 100)
+    }
+    for (let temporary of tiles.getTilesByType(assets.tile`myTile59`)) {
+        razor_ball = sprites.create(img`
+            . . 7 7 . . 
+            . 7 6 6 7 . 
+            7 6 7 7 6 7 
+            7 6 6 7 6 7 
+            . 7 6 6 7 . 
+            . . 7 7 . . 
+            `, SpriteKind.Enemy)
+        tiles.placeOnTile(razor_ball, temporary)
+        razor_ball.setBounceOnWall(true)
+        razor_ball.setVelocity(0, -100)
+    }
+}
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile34`, function (sprite, location) {
     dog.sayText("A to press", 100, false)
     if (controller.A.isPressed()) {
@@ -114,6 +158,11 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile47`, function (sprite, 
     tiles.loadMap(tiles.createMap(tilemap`level9`))
     tiles.placeOnRandomTile(dog, assets.tile`myTile10`)
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile57`, function (sprite, location) {
+    tiles.loadMap(tiles.createMap(tilemap`level12`))
+    tiles.placeOnRandomTile(dog, assets.tile`myTile10`)
+    SpawnRazorBall()
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     if (chest_open) {
     	
@@ -151,9 +200,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile27`, function (sprite, 
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile41`, function (sprite, location) {
     game.over(false)
 })
-sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
-    SpawnEnemyDrone()
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile26`, function (sprite, location) {
     tiles.loadMap(tiles.createMap(tilemap`level2`))
     tiles.placeOnRandomTile(dog, assets.tile`myTile10`)
@@ -181,13 +227,14 @@ function SpawnEnemyDrone () {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.Enemy)
-        enemy_drone.follow(dog, 50)
+        enemy_drone.follow(dog, randint(35, 60))
         tiles.placeOnTile(enemy_drone, temporary)
     }
 }
 let enemy_drone: Sprite = null
 let chest_open: Sprite = null
 let diamond_chest_open: Sprite = null
+let razor_ball: Sprite = null
 let dog: Sprite = null
 tiles.loadMap(tiles.createMap(tilemap`level3`))
 dog = sprites.create(img`
@@ -221,4 +268,7 @@ game.onUpdate(function () {
     } else {
     	
     }
+})
+game.onUpdateInterval(5000, function () {
+    SpawnEnemyDrone()
 })
